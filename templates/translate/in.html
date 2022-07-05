@@ -1,0 +1,14 @@
+<form action="" method="POST">
+        {% csrf_token %}
+        <input name="land" type="text" placeholder="Введите текст" {% if texts %} value="{{texts}}" {% endif %} >
+        <select name="from_translate">
+            {% for lang in langs %}
+                <option value="{{lang}}" {% if target_language == land %}selected{% endif %}> {{lang}}</option>
+            {% endfor %}
+
+        </select>
+        <button type="submit">Перевести</button>
+        {% if all %}
+            {{ all }}
+        {% endif %}
+</form>
