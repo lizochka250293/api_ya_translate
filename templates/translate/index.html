@@ -8,23 +8,20 @@
                 </div>
                 <form id="form" class="p-3" action='' method="POST">
                     {% csrf_token %}
-                    <div class="form-row">
-                        <div class="form-group col-md-4 mb-0">
-                            <label for="land"></label>
-                            <input id='land' type="text" class="form-control" placeholder="Введите текст" {% if texts %} value="{{texts}}" {% endif %} name="land">
-                        </div>
-                        <div class="form-group col-md-4 mb-0">
-                            <label for="from_translate"></label>
+                    <div class="inline-form">
+
+                            <input id='lang' type="text" class="form-control" placeholder="Введите текст" {% if texts %} value="{{texts}}" {% endif %} name="lang">
+
                             <select class="form-control" id="from_translate" name="from_translate" value="{{ from_translate }}">
                                 {% for lang in langs %}
-                                    <option value="{{ lang }}" {% if target_language == land %}selected{% endif %}> {{lang}}</option>
+                                    <option value="{{ lang }}" {% if from_translate == lang %}selected{% endif %}> {{lang}}</option>
                                 {% endfor %}
                             </select>
-                        </div>
-                            <div class="submit-btn mt-3">
+
                                 <button type="submit" class="btn btn-primary">Перевести</button>
-                            </div>
+
                         <hr>
+                        </div>
                         {% if all %}
                             <div class="card col-6 p-0 m-auto">
                                 <div class="card-body">
@@ -32,7 +29,7 @@
                                 </div>
                             </div>
                         {% endif %}
-                         </div>
+
                 </form>
             </div>
         </div>
